@@ -13,7 +13,7 @@ export class ProductService
     {
         return this.http.get('https://still-ravine-76105.herokuapp.com/listProduct')
         .map((response: Response) =>{
-            return response.json;
+            return response.json();
         }
         ).catch(
         (error: Response) => {

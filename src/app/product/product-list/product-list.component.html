@@ -1,3 +1,22 @@
-<p>
-  product-list works!
-</p>
+ <div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+ <a
+      href="#"
+      class="list-group-item clearfix"
+      *ngFor="let product of productList">
+      <h4 class="list-group-item-heading">{{ product.name }}</h4>
+      <div class="pull-right">
+        <i><h5 class="list-group-item-heading">{{ product.category }}</h5></i>
+        <p class="list-group-item-text">{{ product.price }}</p>
+      </div>
+      <span class="pull-left">
+        <img
+          src="https://images.apple.com/macbook-air/overview/wifi/image_large.png"
+          class="img-responsive"
+          style="max-height: 50px;">
+      </span>
+    </a>
+        </div>
+    </div>
+ </div>
