@@ -1,0 +1,36 @@
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+          <form [formGroup]="productForm">
+            <div id="user-date">
+              <div class="form-group">
+                <label for="productname">Product Name</label>
+                <input type="text" id="productname" formControlName="productname" class="input-group mb-2 mr-sm-2 mb-sm-0">
+              </div>
+              
+              <div class="form-group">
+                <label for="productdesc">Product Description</label>
+                <textarea type="text" id="productdesc" formControlName="productdesc" class="input-group mb-2 mr-sm-2 mb-sm-0" rows="3"></textarea>
+              </div>
+
+               <div class="form-group">
+                <label for="producturl">Product Image URL</label>
+                <input type="text" id="producturl" formControlName="producturl" class="input-group mb-2 mr-sm-2 mb-sm-0">
+              </div>
+
+               <div class="form-group">
+                <label for="productcategory">Product Category</label>
+                <input type="text" id="productcategory" formControlName="productcategory" class="input-group mb-2 mr-sm-2 mb-sm-0">
+              </div>
+
+              <div class="form-group">
+                <label for="productcost">Product Cost</label>
+                <input type="text" id="productcost" formControlName="productcost" class="input-group mb-2 mr-sm-2 mb-sm-0">
+              </div>
+              <button [disabled] = !productForm.valid class="btn btn-primary" (click)="onAddProduct()" type="submit">Add</button>
+              <button class="btn btn-primary" type="submit">Reset</button>
+              </div>
+          </form>
+        </div>
+    </div>
+</div>  

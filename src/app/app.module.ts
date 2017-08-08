@@ -1,16 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { Routes} from'@angular/router';
+import { RouterModule} from'@angular/router';
 import { AppComponent } from './app.component';
+import { ProductComponent } from './product/product.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductAddComponent } from './product/product-add/product-add.component';
+import { ProductService } from './product/service/product-service';
+import { HeaderComponent } from './header/header.component';
+
+const appRoute: Routes =[
+  {path: 'listProduct', component: ProductListComponent},
+  {path: 'createProduct', component: ProductAddComponent},
+  {path: 'product', component: ProductComponent}
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductComponent,
+    ProductListComponent,
+    ProductAddComponent,
+    HeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoute)
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
