@@ -1,6 +1,7 @@
   <div class="container">
-    <div class="row">
         <div class="col-xs-8">
+          <h4 class="header-list"> Add product</h4>
+          <hr>
           <form [formGroup]="productForm">
             <div id="user-date">
               <div class="form-group">
@@ -14,23 +15,26 @@
               </div>
 
                <div class="form-group">
-                <label for="producturl">Product Image URL</label>
-                <input type="text" id="producturl" formControlName="producturl" class="input-group mb-2 mr-sm-2 mb-sm-0">
-              </div>
-
-               <div class="form-group">
                 <label for="productcategory">Product Category</label>
                 <input type="text" id="productcategory" formControlName="productcategory" class="input-group mb-2 mr-sm-2 mb-sm-0">
               </div>
-
+  
               <div class="form-group">
                 <label for="productcost">Product Cost</label>
                 <input type="text" id="productcost" formControlName="productcost" class="input-group mb-2 mr-sm-2 mb-sm-0">
               </div>
-              <button [disabled] = !productForm.valid class="btn btn-primary" (click)="onAddProduct()" type="submit">Add</button>
-              <button class="btn btn-primary" type="submit">Reset</button>
+
+                <div class="form-group">
+                  <label for="producturl">Product Image URL</label>
+                  <input type="text" id="producturl" formControlName="producturl" class="input-group mb-2 mr-sm-2 mb-sm-0">
+                </div>
+
+              <input [disabled] = !productForm.valid (click)="onAddProduct()" class="btn btn-primary" 
+              type="button" name="{{buttonAddUpd}}" value="{{buttonAddUpd}}">
+
+              <button class="btn btn-primary" (click)="onReset()" type="submit">Reset</button>
+              
               </div>
           </form>
         </div>
-    </div>
 </div>  

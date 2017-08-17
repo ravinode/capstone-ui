@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Ng2DragDropModule } from 'ng2-drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes} from'@angular/router';
@@ -10,6 +11,10 @@ import { ProductListComponent } from './product/product-list/product-list.compon
 import { ProductAddComponent } from './product/product-add/product-add.component';
 import { ProductService } from './product/service/product-service';
 import { HeaderComponent } from './header/header.component';
+import { ShortenPipe } from './pipe/shorten-pipe';
+import { DuplicatePipe } from './pipe/duplicatePipe';
+
+
 
 const appRoute: Routes =[
   {path: 'listProduct', component: ProductListComponent},
@@ -23,13 +28,16 @@ const appRoute: Routes =[
     ProductComponent,
     ProductListComponent,
     ProductAddComponent,
-    HeaderComponent
+    HeaderComponent,
+    ShortenPipe,
+    DuplicatePipe
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
+    Ng2DragDropModule.forRoot(),
     RouterModule.forRoot(appRoute)
   ],
   providers: [ProductService],

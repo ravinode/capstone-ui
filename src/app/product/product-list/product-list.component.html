@@ -1,22 +1,55 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="list-group">
- <a
-      href="#"
-      class="list-group-item clearfix"
-      *ngFor="let product of productList">
-      <h4 class="list-group-item-heading">{{ product.name }}</h4>
-      <div class="pull-right">
-        <i><h5 class="list-group-item-heading">{{ product.category }}</h5></i>
-        <p class="list-group-item-text">{{ product.price }}</p>
-      </div>
+<h4>Catagory Filter</h4>
+<div  droppable (onDrop)="onItemDrop($event)">
+<label draggable *ngFor="let product of productList" [dragData]="product">
+        <label class="label label-danger"> {{product.category }} </label>
+        <span> </span>
+</label>
+</div>
+
+<div class="panel panel-default" droppable (onDrop)="onItemDrop($event)">
+  <div class="panel-heading">Drop Items here to filter</div>
+  <div class="panel-body">
+
+    <label draggable *ngFor="let product of droppedItems">
+        <label class="label label-danger"> {{product.category}} </label>
+    <span> </span>
+    </label>
+
+  </div>
+</div>
+
+<h4 class="header-list"> Product list </h4>
+<hr>
+<div *ngFor="let product of productList">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ product.name }}</h3>
+    </div>
+
+    <div class="panel-body">
+      <span class="pull-left label label-default">{{ product.description | shortenPipe}}</span>
+      <br>
       <span class="pull-left">
         <img
-          src="https://images.apple.com/macbook-air/overview/wifi/image_large.png"
+          src = "{{product.producturl}}"
           class="img-responsive"
-          style="max-height: 50px;">
-      </span>
-    </a>
-          </div>
-        </div>
+          style="max-height: 100px;">
+        </span>
+
+      <div class="pull-right">
+        <br>
+        <h5 class="label label-default">
+          {{ product.category }}</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h5 class="label label-warning">
+          $ {{ product.price }}</h5>
+        <hr>
+        <br>
+        <button type="button" (click)="deleteServer(product._id)" class="btn btn-danger">Delete</button> &nbsp;&nbsp;
+        <button type="button" (click)="onEdit(product._id,product.name,product.category,product.description,product.producturl,product.price)"
+          class="btn btn-primary">Edit</button>
+      </div>
     </div>
+  </div>
+</div>
