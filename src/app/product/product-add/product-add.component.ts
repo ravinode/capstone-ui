@@ -16,10 +16,12 @@ export class ProductAddComponent implements OnInit {
 
   productForm: FormGroup;
   products = [];
-  buttonAddUpd = "Add";
+  buttonAddUpd = 'Add';
   updateID;
 
   constructor(private productService: ProductService) { }
+
+  // Template based HTML 
 
   ngOnInit() {
     this.productForm = new FormGroup({
@@ -34,7 +36,7 @@ export class ProductAddComponent implements OnInit {
       (result: any) => {
         this.updateID = result[0]._id;
         console.log(result[0].name);
-        this.buttonAddUpd = "Update";
+        this.buttonAddUpd = 'Update';
         this.productForm.patchValue({
           'productname': result[0].name,
           'productdesc': result[0].description,
@@ -44,16 +46,15 @@ export class ProductAddComponent implements OnInit {
         });
       }
     );
-    
-    
   }
-
-  onReset()
-  {
+// On click on Reset, form will be cleared
+  onReset() {
     this.productForm.reset();
     this.products = [];
-    this.buttonAddUpd = "Add";
+    this.buttonAddUpd = 'Add';
   }
+
+  // On click on Add, product will be added to Mongo DB using node and express framework
   onAddProduct() {
     this.products.push(
       {
@@ -63,21 +64,19 @@ export class ProductAddComponent implements OnInit {
         producturl: this.productForm.get('producturl').value,
         price: this.productForm.get('productcost').value
       });
-
-    if (this.buttonAddUpd === "Add")
-      {
+// update if button name is Add
+    if (this.buttonAddUpd === 'Add') {
       this.productService.createProduct(this.products).subscribe(
         (response) => {
-          this.productService.productAdded.emit("Successfully added");
+          this.productService.productAdded.emit('Successfully added');
         },
         (error) => console.log(error));
 
       this.productForm.reset();
       this.products = [];
       }
-
-    else if (this.buttonAddUpd === "Update")
-      {
+// Update if button name is update
+    if (this.buttonAddUpd === 'Update') {
       this.products.push(
         {
           name: this.productForm.get('productname').value,
@@ -86,23 +85,20 @@ export class ProductAddComponent implements OnInit {
           producturl: this.productForm.get('producturl').value,
           price: this.productForm.get('productcost').value
         });
-      console.log("Update" + this.updateID + this.products);
       this.productService.deleteServer(this.updateID).subscribe(
         (response) => {
-          console.log("Response delete" + response);
         },
         (error) => console.log(error));
 
       this.productService.createProduct(this.products).subscribe(
         (response) => {
-          this.productService.productAdded.emit("Successfully added");
+          this.productService.productAdded.emit('Successfully added');
         },
         (error) => console.log(error));
 
       this.productForm.reset();
       this.products = [];
-      this.buttonAddUpd = "Add";
+      this.buttonAddUpd = 'Add';
       }
-      
   }
 }

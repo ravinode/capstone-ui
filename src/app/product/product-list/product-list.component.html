@@ -12,7 +12,7 @@
   </div>
   <div class="panel-body">
 
-    <label draggable *ngFor="let category of droppedItems">
+    <label *ngFor="let category of droppedItems">
         <label class="label label-danger"> {{category}} </label>
         <input type="hidden" [(ngModel)] = categoryValue >
     <span> </span>

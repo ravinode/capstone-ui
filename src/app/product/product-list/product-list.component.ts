@@ -17,12 +17,7 @@ export class ProductListComponent implements OnInit {
  categoryValue = 'empty';
   constructor(private productService: ProductService) {
   }
-
-  onItemDrop(e: any) {
-    this.droppedItems.push(e.dragData);
-    this.categoryValue = e.dragData;
-    console.log(this.categoryValue);
-  }
+  
 
   ngOnInit() {
      this.getProductList();
@@ -34,12 +29,17 @@ export class ProductListComponent implements OnInit {
        }
      );
   }
-
-
+  onItemDrop(e: any) {
+    this.droppedItems.push(e.dragData);
+    this.categoryValue = e.dragData;
+    console.log(this.categoryValue);
+  }
+// On clear filter
   onClear() {
     this.droppedItems = [];
     this.categoryValue = 'empty';
   }
+  // Logic to edit
   onEdit(id, name, category, description, producturl, price) {
     this.updateProduct.push(
       {
@@ -50,13 +50,10 @@ export class ProductListComponent implements OnInit {
         producturl: producturl,
         price: price
       });
-
-    console.log(this.updateProduct);
-
     this.productService.productUpdated.emit(this.updateProduct);
     this.updateProduct = [];
   }
-
+// Delete server based on id
   deleteServer(id) {
     console.log(id);
     this.productService.deleteServer(id).subscribe(
@@ -66,7 +63,7 @@ export class ProductListComponent implements OnInit {
       },
       (error) => console.log(error));
   }
-
+// list the product from Mongo DB
   getProductList() {
       this.productService.getProductList().subscribe(
       (products: any[]) => {
@@ -76,7 +73,7 @@ export class ProductListComponent implements OnInit {
     );
 
   }
-
+// get category from Mongo DB
   getCategory() {
   this.productService.getCategory().subscribe(
     (category: any[]) => {
