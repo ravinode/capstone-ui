@@ -13,6 +13,7 @@ import { ProductService } from './product/service/product-service';
 import { HeaderComponent } from './header/header.component';
 import { ShortenPipe } from './pipe/shorten-pipe';
 import { DuplicatePipe } from './pipe/duplicatePipe';
+import { FilterPipe } from './pipe/filter-pipe';
 
 
 
@@ -30,7 +31,8 @@ const appRoute: Routes =[
     ProductAddComponent,
     HeaderComponent,
     ShortenPipe,
-    DuplicatePipe
+    DuplicatePipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
