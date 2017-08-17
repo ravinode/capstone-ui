@@ -15,8 +15,6 @@ import { ShortenPipe } from './pipe/shorten-pipe';
 import { DuplicatePipe } from './pipe/duplicatePipe';
 import { FilterPipe } from './pipe/filter-pipe';
 
-
-
 const appRoute: Routes =[
   {path: 'listProduct', component: ProductListComponent},
   {path: 'createProduct', component: ProductAddComponent},
