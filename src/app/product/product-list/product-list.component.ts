@@ -36,11 +36,9 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  onClear()
-  {
+  onClear() {
     this.droppedItems = [];
     this.categoryValue = 'empty';
-    
   }
   onEdit(id, name, category, description, producturl, price) {
     this.updateProduct.push(
