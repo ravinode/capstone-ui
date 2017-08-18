@@ -84,16 +84,26 @@ export class ProductAddComponent implements OnInit {
           producturl: this.productForm.get('producturl').value,
           price: this.productForm.get('productcost').value
         });
-      this.productService.deleteServer(this.updateID).subscribe(
+
+      this.productService.updateProduct(this.products,this.updateID).subscribe(
         (response) => {
+          console.log(response);
+          this.productService.productAdded.emit('Successfully added');
+          
         },
         (error) => console.log(error));
 
-      this.productService.createProduct(this.products).subscribe(
-        (response) => {
-          this.productService.productAdded.emit('Successfully added');
-        },
-        (error) => console.log(error));
+
+      // this.productService.deleteServer(this.updateID).subscribe(
+      //   (response) => {
+      //   },
+      //   (error) => console.log(error));
+
+      // this.productService.createProduct(this.products).subscribe(
+      //   (response) => {
+      //     this.productService.productAdded.emit('Successfully added');
+      //   },
+      //   (error) => console.log(error));
 
       this.productForm.reset();
       this.products = [];

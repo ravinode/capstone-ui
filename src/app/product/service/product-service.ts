@@ -29,6 +29,14 @@ export class ProductService {
         const result = this.http.post('https://still-ravine-76105.herokuapp.com/create', products[0], {headers});
         return result;
     }
+
+//Update API
+    updateProduct(products: any, id: String) {
+        const headers = new Headers ({ 'Content-type': 'application/json' });
+        const result = this.http.patch('https://still-ravine-76105.herokuapp.com/update/'+ id, products[0], { headers });
+        return result;
+    }
+
 // Delete the server from Mongo DB
     deleteServer(id: String) {
         const result = this.http.delete('https://still-ravine-76105.herokuapp.com/delete/' + id);
