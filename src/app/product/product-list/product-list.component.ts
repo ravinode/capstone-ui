@@ -27,6 +27,7 @@ export class ProductListComponent implements OnInit {
       (result: any) => {
         this.getProductList();
         this.getCategory();
+        this.onClear();
       }
     );
   }
