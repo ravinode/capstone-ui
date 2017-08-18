@@ -35,7 +35,6 @@ export class ProductAddComponent implements OnInit {
     this.productService.productUpdated.subscribe(
       (result: any) => {
         this.updateID = result[0]._id;
-        console.log(result[0].name);
         this.buttonAddUpd = 'Update';
         this.productForm.patchValue({
           'productname': result[0].name,

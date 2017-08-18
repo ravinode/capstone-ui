@@ -39,7 +39,7 @@ const appRoute: Routes =[
     Ng2DragDropModule.forRoot(),
     RouterModule.forRoot(appRoute)
   ],
-  providers: [ProductService],
+  providers: [ProductService, FilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

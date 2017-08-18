@@ -3,6 +3,7 @@ import { ProductService } from '../service/product-service';
 import 'rxjs/Rx';
 import { Product } from '../model/product-model';
 import { Observable } from 'rxjs/Observable';
+import { FilterPipe } from '../../pipe/filter-pipe'
 
 @Component({
   selector: 'app-product-list',
@@ -14,8 +15,8 @@ export class ProductListComponent implements OnInit {
  updateProduct = [];
  droppedItems= [];
  categoryList= [];
- categoryValue = 'empty';
-  constructor(private productService: ProductService) {
+ categoryValue = '';
+ constructor(private productService: ProductService, private filterPipe: FilterPipe) {
   }
   
 
@@ -31,13 +32,16 @@ export class ProductListComponent implements OnInit {
   }
   onItemDrop(e: any) {
     this.droppedItems.push(e.dragData);
-    this.categoryValue = e.dragData;
-    console.log(this.categoryValue);
+    this.categoryValue = e.dragData;    
+    console.log("Drop" +this.droppedItems);
+    console.log("Drop dd " + this.categoryValue);
+    
   }
 // On clear filter
   onClear() {
     this.droppedItems = [];
-    this.categoryValue = 'empty';
+    this.categoryValue = '';
+    this.filterPipe.transform(this.droppedItems,this.categoryValue);
   }
   // Logic to edit
   onEdit(id, name, category, description, producturl, price) {

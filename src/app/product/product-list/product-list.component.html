@@ -13,7 +13,7 @@
   <div class="panel-body">
 
     <label *ngFor="let category of droppedItems">
-        <label class="label label-danger"> {{category}} </label>
+        <label class="label label-danger">{{category}}  </label>
         <input type="hidden" [(ngModel)] = categoryValue >
     <span> </span>
     </label>
@@ -22,7 +22,7 @@
 </div>
 <h4 class="header-list"> Product list </h4>
 <hr>
-<div *ngFor="let product of productList | filterPipe: categoryValue ">
+<div *ngFor="let product of productList | filterPipe: categoryValue">
   <div class="panel panel-default">
 
     <div class="panel-heading">
