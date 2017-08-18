@@ -12,6 +12,7 @@ import { Product } from '../model/product-model';
   templateUrl: './product-add.component.html',
   styleUrls: ['./product-add.component.css']
 })
+
 export class ProductAddComponent implements OnInit {
 
   productForm: FormGroup;

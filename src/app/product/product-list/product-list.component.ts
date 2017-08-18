@@ -34,9 +34,17 @@ export class ProductListComponent implements OnInit {
   onItemDrop(e: any) {
     this.droppedItems.push(e.dragData);
     this.categoryValue = e.dragData;
+   // this.removeItem(e.dragData, this.categoryList);
     console.log("Drop" + this.droppedItems);
     console.log("Drop dd " + this.categoryValue);
 
+  }
+
+  removeItem(item: any, list: Array<any>) {
+    let index = list.map(function (e) {
+      return e.name
+    }).indexOf(item.name);
+    list.splice(index, 1);
   }
   // On clear filter
   onClear() {
