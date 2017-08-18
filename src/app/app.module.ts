@@ -12,7 +12,6 @@ import { ProductAddComponent } from './product/product-add/product-add.component
 import { ProductService } from './product/service/product-service';
 import { HeaderComponent } from './header/header.component';
 import { ShortenPipe } from './pipe/shorten-pipe';
-import { DuplicatePipe } from './pipe/duplicatePipe';
 import { FilterPipe } from './pipe/filter-pipe';
 const appRoute: Routes =[
   {path: 'listProduct', component: ProductListComponent},
@@ -28,7 +27,6 @@ const appRoute: Routes =[
     ProductAddComponent,
     HeaderComponent,
     ShortenPipe,
-    DuplicatePipe,
     FilterPipe
   ],
   imports: [

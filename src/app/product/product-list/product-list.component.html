@@ -1,9 +1,9 @@
 <h4>Catagory Filter</h4>
-<div  droppable (onDrop)="onItemDrop($event)">
-<label draggable *ngFor="let category of categoryList" [dragData]="category">
+<div droppable (onDrop)="onItemDrop($event)">
+  <label draggable *ngFor="let category of categoryList" [dragData]="category">
         <label class="label label-danger"> {{category}} </label>
-        <span> </span>
-</label>
+  <span> </span>
+  </label>
 </div>
 <br>
 <div class="panel panel-default" droppable (onDrop)="onItemDrop($event)">
@@ -14,7 +14,7 @@
 
     <label *ngFor="let category of droppedItems">
         <label class="label label-danger">{{category}}  </label>
-        <input type="hidden" [(ngModel)] = categoryValue >
+    <input type="hidden" [(ngModel)]=c ategoryValue>
     <span> </span>
     </label>
 

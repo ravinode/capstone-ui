@@ -11,37 +11,37 @@ import { FilterPipe } from '../../pipe/filter-pipe'
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
- productList = [];
- updateProduct = [];
- droppedItems= [];
- categoryList= [];
- categoryValue = '';
- constructor(private productService: ProductService, private filterPipe: FilterPipe) {
+  productList = [];
+  updateProduct = [];
+  droppedItems = [];
+  categoryList = [];
+  categoryValue = '';
+  constructor(private productService: ProductService, private filterPipe: FilterPipe) {
   }
-  
+
 
   ngOnInit() {
-     this.getProductList();
-     this.getCategory();
-     this.productService.productAdded.subscribe(
-       (result: any) => {
-         this.getProductList();
-         this.getCategory();
-       }
-     );
+    this.getProductList();
+    this.getCategory();
+    this.productService.productAdded.subscribe(
+      (result: any) => {
+        this.getProductList();
+        this.getCategory();
+      }
+    );
   }
   onItemDrop(e: any) {
     this.droppedItems.push(e.dragData);
-    this.categoryValue = e.dragData;    
-    console.log("Drop" +this.droppedItems);
+    this.categoryValue = e.dragData;
+    console.log("Drop" + this.droppedItems);
     console.log("Drop dd " + this.categoryValue);
-    
+
   }
-// On clear filter
+  // On clear filter
   onClear() {
     this.droppedItems = [];
     this.categoryValue = '';
-    this.filterPipe.transform(this.droppedItems,this.categoryValue);
+    this.filterPipe.transform(this.droppedItems, this.categoryValue);
   }
   // Logic to edit
   onEdit(id, name, category, description, producturl, price) {
@@ -57,7 +57,7 @@ export class ProductListComponent implements OnInit {
     this.productService.productUpdated.emit(this.updateProduct);
     this.updateProduct = [];
   }
-// Delete server based on id
+  // Delete server based on id
   deleteServer(id) {
     console.log(id);
     this.productService.deleteServer(id).subscribe(
@@ -67,9 +67,9 @@ export class ProductListComponent implements OnInit {
       },
       (error) => console.log(error));
   }
-// list the product from Mongo DB
+  // list the product from Mongo DB
   getProductList() {
-      this.productService.getProductList().subscribe(
+    this.productService.getProductList().subscribe(
       (products: any[]) => {
         this.productList = products;
       },
@@ -77,14 +77,14 @@ export class ProductListComponent implements OnInit {
     );
 
   }
-// get category from Mongo DB
+  // get category from Mongo DB
   getCategory() {
-  this.productService.getCategory().subscribe(
-    (category: any[]) => {
-      this.categoryList = category;
+    this.productService.getCategory().subscribe(
+      (category: any[]) => {
+        this.categoryList = category;
 
-    },
-    (error) => console.log(error)
-  );
-}
+      },
+      (error) => console.log(error)
+    );
+  }
 }
